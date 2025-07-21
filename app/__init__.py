@@ -17,11 +17,12 @@ def create_app():
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
-    # Initialize the database and migrations
-    # Ensure that the database is initialized with the app context
-    
-    # Example: db.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
-
+    # Create database tables
+    
+    with app.app_context():
+        from app import models
+        db.create_all()
+    # Import models to ensure they are registered with SQLAlchemy
     return app
