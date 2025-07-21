@@ -1,5 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+# Initialize extensions
+migrate = Migrate()
 
 db = SQLAlchemy()
 
@@ -12,5 +16,6 @@ def create_app():
     # Initialize extensions, blueprints, etc.
     # Example: db.init_app(app)
     db.init_app(app)
+    migrate.init_app(app, db)
 
     return app
