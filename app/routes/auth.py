@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
+from app.models.user import User
+
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -21,6 +23,11 @@ def register():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
+    new_user = User(username=username, password=password)
+    db.session.add(new_user)
+    db.session.commit()
+    # This is where you would typically hash the password and save the user to your database
+    # For simplicity, we will just return a success message
     
     # Here you would typically save the user to your database
     # For simplicity, we will just return a success message
