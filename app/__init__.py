@@ -14,6 +14,12 @@ def create_app():
     app.config.from_object('config.Config')
 
     # Initialize extensions, blueprints, etc.
+    from app.routes.auth import auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+
+    # Initialize the database and migrations
+    # Ensure that the database is initialized with the app context
+    
     # Example: db.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
