@@ -15,7 +15,7 @@ def create_app():
 
     # Initialize extensions, blueprints, etc.
     from app.routes.auth import auth_bp
-    app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(auth_bp)
 
     db.init_app(app)
     migrate.init_app(app, db)

@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<h1>Login Page</h1>
+<form method="POST" action="/login">    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    
+    <button type="submit">Login</button>
+    <a href="/register">Register</a>
+    <a href="/forgot-password">Forgot Password?</a>
+    <a href="/">Home</a>
+    <a href="/logout">Logout</a>
+    
+</form>
+{% endblock %}
