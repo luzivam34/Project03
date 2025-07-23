@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar versiculo{% endblock %}
+
+{% block content %}
+
+<h1>Editar Versículo</h1>
+<form method="POST" action="{{ url_for('biblia.editar_versiculo', id=versiculo.id) }}">
+
+
+    <div class="form-group">
+        <label for="testamento">Testamento:</label>
+        <input type="text" id="testamento" name="testamento" value="{{ versiculo.testamento }}" required>
+    </div>
+    <div class="form-group">
+        <label for="livro">Livro:</label>
+        <input type="text" id="livro" name="livro" value="{{ versiculo.livro }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="capitulo">Capítulo:</label>
+        <input type="number" id="capitulo" name="capitulo" value="{{ versiculo.capitulo }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="versiculo">Versículo:</label>
+        <input type="number" id="versiculo" name="versiculo" value="{{ versiculo.versiculo }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="conteudo">Conteúdo:</label>
+        <textarea id="conteudo" name="conteudo" value="{{ versiculo.conteudo }}" required>{{ versiculo.conteudo }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <br>
+    <br>
+    <a href="{{ url_for('biblia.biblia') }}">Cancelar</a>
+</form>
+
+
+{% endblock %}

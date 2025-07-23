@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Biblia Page{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo à Bíblia</h1>
+<p>Esta é a página principal da Bíblia.</p>
+<section>
+    <h2>Biblia Sagrada</h2>
+    <div class="container_box">
+    {% for testamento in testamentos %}
+        <a href="/{{ testamento.testamento }}"><div class="box">{{ testamento.testamento }}</div></a>
+    {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+<section>
+    <h2>Antigo Testamento</h2>
+    
+    {% for versiculo in versiculos %}
+        <div class="versiculo">
+            <h3><a href="/{{ versiculo.livro }}"> {{ versiculo.livro }}</a> {{ versiculo.capitulo }}:{{ versiculo.versiculo }}</h3>
+            <p>{{ versiculo.conteudo }}</p>
+
+            <a href="{{ url_for('biblia.editar_versiculo', id=versiculo.id) }}" class="buttons">Editar</a>
+
+            <form method="POST" action="{{ url_for('biblia.excluir_versiculo', id=versiculo.id) }}" class="form_button">
+                <button type="submit" class="buttons">Deletar</button>
+            </form>
+        </div>
+        {% endfor %}
+</section>
+
+
+
+{% endblock %}

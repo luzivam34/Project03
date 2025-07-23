@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro de Versículo{% endblock %}
+
+{% block content %}
+
+<h1>Cadastro de Versículo</h1>
+<form method="POST" action="{{ url_for('biblia.cadastro_versiculo') }}">
+    <div class="mb-3">
+        <label for="testa" class="form-label">Testamento</label>
+        <input type="text" class="form-control" id="testamento" name="testamento" required>
+    </div>
+    <div class="mb-3">
+        <label for="book" class="form-label">Livro</label>
+        <input type="text" class="form-control" id="livro" name="livro" required>
+    </div>
+    <div class="mb-3">
+        <label for="chapter" class="form-label">Capítulo</label>
+        <input type="number" class="form-control" id="Capitulo" name="capitulo" required>
+    </div>
+    <div class="mb-3">
+        <label for="verse" class="form-label">Versículo</label>
+        <input type="number" class="form-control" id="Versiculo" name="versiculo" required>
+    </div>
+    <div class="mb-3">
+        <label for="text" class="form-label">Texto do Versículo</label>
+        <textarea class="form-control" id="conteudo" name="conteudo" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+{% if success %}
+    <div class="alert alert-success" role="alert">
+        Cadastro realizado com sucesso!
+    </div>
+{% endif %}
+
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        Erro ao cadastrar o versículo: {{ error }}
+    </div>
+{% endif %}
+{% endblock %}

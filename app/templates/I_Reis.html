@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}I Reis Page{% endblock %}
+
+{% block content %}
+
+<h1>I Reis</h1>
+<p>Esta é a página do livro de I Reis.</p>
+
+{% for versiculo in versiculos %}
+    <div>
+        <h3>{{ versiculo.livro }} {{ versiculo.capitulo }}:{{ versiculo.versiculo }}</h3>
+        <p>{{ versiculo.conteudo }}</p>
+
+    </div>
+{% endfor %}
+
+
+{% endblock %}
